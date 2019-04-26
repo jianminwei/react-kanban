@@ -8,7 +8,6 @@ import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import { createStore } from 'redux' 
 import tasks from './reducers' 
 
 const store = createStore(
