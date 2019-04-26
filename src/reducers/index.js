@@ -1,30 +1,54 @@
-
-export default function tasks(state = { tasks: [] }, action) {
+const initialState = {
+    tasks: [],
+    isLoading: false,
+    error: null,
+  };
   
-    if (action.type === 'FETCH_TASKS_SUCCEEDED') {
+  export default function tasks(state = initialState, action) {
+    switch (action.type) {
+      case 'FETCH_TASKS_STARTED': {
         return {
-            tasks: action.payload.tasks,
-        }
-    }
-
-    if (action.type === 'CREATE_TASK') {
-        return {
-            tasks: state.tasks.concat(action.payload),
+          ...state,
+          isLoading: true,
         };
-    }
-
-    if (action.type === 'EDIT_TASK') {
+      }
+      case 'FETCH_TASKS_SUCCEEDED': {
+        return {
+          ...state,
+          tasks: action.payload.tasks,
+          isLoading: false,
+        };
+      }
+      case 'FETCH_TASKS_FAILED': {
+        return {
+          ...state,
+          isLoading: false,
+          error: action.payload.error,
+        };
+      }
+      case 'CREATE_TASK_SUCCEEDED': {
+        return {
+          ...state,
+          tasks: state.tasks.concat(action.payload.task),
+        };
+      }
+      case 'EDIT_TASK_SUCCEEDED': {
         const { payload } = action;
+        const nextTasks = state.tasks.map(task => {
+          if (task.id === payload.task.id) {
+            return payload.task;
+          }
+  
+          return task;
+        });
         return {
-            tasks: state.tasks.map(task => {
-                if (task.id === payload.id) {
-                    return Object.assign({}, task, payload.params);
-                }
-
-                return task;
-            }),
+          ...state,
+          tasks: nextTasks,
         };
+      }
+      default: {
+        return state;
+      }
     }
-
-  return state;
-}
+  }
+  
