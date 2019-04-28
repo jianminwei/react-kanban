@@ -19,12 +19,6 @@
       "status": "Unstarted"
     },
     {
-      "title": "clean",
-      "description": "clean house",
-      "status": "Unstarted",
-      "id": 4
-    },
-    {
       "title": "Exercise",
       "description": "Playing tennis",
       "status": "In Progress",
@@ -33,7 +27,7 @@
     {
       "title": "Reading",
       "description": "Read and study Redux in Action",
-      "status": "Unstarted",
+      "status": "In Progress",
       "id": 6
     }
   ]
