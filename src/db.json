@@ -16,19 +16,25 @@
       "id": 3,
       "title": "Create Facebook for dogs",
       "description": "The hottest new social network",
-      "status": "In Progress"
+      "status": "Unstarted"
     },
     {
       "title": "clean",
       "description": "clean house",
-      "status": "In Progress",
+      "status": "Unstarted",
       "id": 4
     },
     {
       "title": "Exercise",
       "description": "Playing tennis",
-      "status": "Unstarted",
+      "status": "In Progress",
       "id": 5
+    },
+    {
+      "title": "Reading",
+      "description": "Read and study Redux in Action",
+      "status": "Unstarted",
+      "id": 6
     }
   ]
 }
