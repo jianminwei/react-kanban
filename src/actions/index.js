@@ -75,6 +75,10 @@ function editTaskSucceeded(task) {
   };
 }
 
+export function filterTasks(searchTerm) {
+  return { type: 'FILTER_TASKS', payload: { searchTerm } }
+}
+
 export function editTask(id, params = {}) {
   return (dispatch, getState) => {
     const task = getTaskById(getState().tasks.tasks, id);
