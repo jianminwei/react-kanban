@@ -1,3 +1,5 @@
+### This app is created following Redux in Action book - an excellent book
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
