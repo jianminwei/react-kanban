@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import TaskList from './TaskList';
 
-import { TASK_STATUSES } from '../constants';
-
 class TasksPage extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +43,23 @@ class TasksPage extends Component {
   onSearch = e => {
     this.props.onSearch(e.target.value);
   };
+
+  renderTaskLists() {
+    const { onStatusChange, tasks } = this.props;
+
+    return Object.keys(tasks).map(status => {
+      const tasksByStatus = tasks[status];
+
+      return (
+        <TaskList
+          key={status}
+          status={status}
+          tasks={tasksByStatus}
+          onStatusChange={onStatusChange}
+        />
+      );
+    });
+  }
 
   render() {
     if (this.props.isLoading) {
@@ -90,21 +105,9 @@ class TasksPage extends Component {
               Save
             </button>
           </form>}
-        <div className="task-lists">
-          {TASK_STATUSES.map(status => {
-            const statusTasks = this.props.tasks.filter(
-              task => task.status === status
-            );
-            return (
-              <TaskList
-                key={status}
-                status={status}
-                tasks={statusTasks}
-                onStatusChange={this.props.onStatusChange}
-              />
-            );
-          })}
-        </div>
+          <div className="task-lists">
+             {this.renderTaskLists()}
+          </div>
       </div>
     );
   }
